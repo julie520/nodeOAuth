@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
-import {reduxForm, Field} from "redux-form"
-import CustomInput from "./CustomInput"
+import { reduxForm, Field } from "redux-form"
+import {connect} from "react-redux"
+import { compose } from "redux";
+import {signUp} from "../actions"
+import CustomInput from "./CustomInput";
 
-const SignUp = () => {
+const SignUp = ({signUp}) => {
 
   const [formData, setFormData] = useState({
     email: '',
@@ -18,6 +21,8 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    signUp(formData);
+    setFormData({ email: '', password: '' });
   }
   
   return (
@@ -62,4 +67,7 @@ const SignUp = () => {
   )
 }
 
-export default reduxForm({form: 'signup'})(SignUp)
+export default compose(
+  connect(null, { signUp }),
+  reduxForm({ form: 'signup' })
+)(SignUp);
