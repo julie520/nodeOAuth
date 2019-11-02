@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom"
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom: '30px'}}>
       <NavLink to="/" className="navbar-brand">CodeWorker API Auth</NavLink>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
